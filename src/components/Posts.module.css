@@ -5,8 +5,22 @@
     height: 320px;
 }
 
-
 .postsContainer{
     z-index: 1;
     position: relative;
+}
+
+.addPost{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: rgb(205, 109, 50);
+    color: #eee;
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.addPost:hover{
+    background-color: rgb(171, 102, 42);
 }

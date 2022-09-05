@@ -26,7 +26,7 @@ const UpdateModal = ({close, update, userId, postId, title, postBody}) => {
             <input onChange={(e)=>handleContentChange(e.target.value)}  className={CSS.postBody} value={newPostBody}/>
             <button onClick={()=>update(postId, userId, newTitle, newPostBody)} className={CSS.update}>Update</button>
         </div>
-        </>, document.getElementById("modal"));
+        </>, document.getElementById("UpdateModal"));
 }
  
 export default UpdateModal;

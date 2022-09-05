@@ -4,10 +4,14 @@ import CSS from "./Posts.module.css";
 import Post from "./Post";
 import axios from 'axios';
 import UpdateModal from "./UpdateModal"
+import AddPostModal from './AddPostModal';
 
 const Posts = () => {
     const [data, setData] = useState();    
-    const [showModal, setShowModal] = useState(false);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [showAddPostModal, setShowAddPostModal] = useState(false);
+
+    const [maxPostId, setMaxPostId] = useState(100);
 
     const [currPostId, setCurrPostId] = useState();
     const [currUserId, setCurrUserId] = useState();
@@ -47,24 +51,36 @@ const Posts = () => {
         newData[index].title = title;
         newData[index].body = postBody;
 
-        setShowModal((prev)=>false)
+        setShowUpdateModal((prev)=>false)
+        setData((prev)=> newData);
+    }
+
+    const handleAdd = (title, postBody) => {
+        let newData = data;
+        setMaxPostId((prev)=>prev + 1);
+        newData.push({userId:0, id:maxPostId + 1, title, body:postBody});
+        setShowAddPostModal((prev)=>false)
         setData((prev)=> newData);
     }
 
     const handleModal = (postId, userId, title, postBody) => {
-        setShowModal((prev)=>prev = true);
+        setShowUpdateModal((prev)=>prev = true);
         fillCurrentPostInfo(postId, userId, title, postBody)
-    }
-
-    const handleClose = ()=>{
-        setShowModal((prev)=>prev = false);
     }
 
     return (
         <div className={CSS.postsContainer}>
             <h1>Posts: {data && data.length}</h1>
-            {showModal && <UpdateModal 
-                            close={handleClose}
+            <button onClick={()=>setShowAddPostModal((prev)=>prev = true)} className={CSS.addPost}>Add Post</button>
+            {showAddPostModal && <AddPostModal 
+                            close={()=>setShowAddPostModal((prev)=>prev = false)}
+                            add={handleAdd}
+                            postId={maxPostId}
+                            userId={0} />
+            }
+
+            {showUpdateModal && <UpdateModal 
+                            close={()=>setShowUpdateModal((prev)=>prev = false)}
                             update={handleUpdate}
                             postId={currPostId}
                             userId={currUserId} 
