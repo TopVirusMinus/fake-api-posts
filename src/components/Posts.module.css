@@ -21,6 +21,21 @@
     border-radius: 5px;
 }
 
+.reset{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: rgb(205, 50, 50);
+    color: #eee;
+    padding: 0.4rem;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
+
+.reset:hover{
+    background-color: rgb(171, 42, 42);
+}
+
 .addPost:hover{
     background-color: rgb(171, 102, 42);
 }

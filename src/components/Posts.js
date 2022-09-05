@@ -19,12 +19,12 @@ const Posts = () => {
     const [currPostBody, setCurrPostBody] = useState();
 
     
+    const fetchData = async _=>{
+        await axios.get("http://jsonplaceholder.typicode.com/posts")
+        .then((res)=>setData((prev)=> res.data))
+    }
 
     useEffect(()=>{
-        const fetchData = async _=>{
-            await axios.get("http://jsonplaceholder.typicode.com/posts")
-            .then((res)=>setData((prev)=> res.data))
-        }
         fetchData();
     },[])
     
@@ -68,10 +68,15 @@ const Posts = () => {
         fillCurrentPostInfo(postId, userId, title, postBody)
     }
 
+    const reset = ()=>{
+        fetchData();
+    }
+
     return (
         <div className={CSS.postsContainer}>
             <h1>Posts: {data && data.length}</h1>
             <button onClick={()=>setShowAddPostModal((prev)=>prev = true)} className={CSS.addPost}>Add Post</button>
+            <button onClick={()=>reset()} className={CSS.reset}>Reset</button>
             {showAddPostModal && <AddPostModal 
                             close={()=>setShowAddPostModal((prev)=>prev = false)}
                             add={handleAdd}
