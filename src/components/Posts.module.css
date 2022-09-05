@@ -4,3 +4,9 @@
     overflow:auto;
     height: 320px;
 }
+
+
+.postsContainer{
+    z-index: 1;
+    position: relative;
+}

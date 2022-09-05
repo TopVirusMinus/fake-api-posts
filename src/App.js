@@ -8,7 +8,9 @@ function App() {
   return (
     <div className="App">
       <h1>Mustafabook</h1>
+      <Provider store={postStore}>
         <Posts/>
+      </Provider>
     </div>
   );
 }

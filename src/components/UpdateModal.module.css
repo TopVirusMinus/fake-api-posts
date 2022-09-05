@@ -1,0 +1,85 @@
+
+.modalContainer{
+    padding: 3rem;
+    height: 180px;
+    position: fixed;
+    width: 42%;
+    background-color: #333;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    animation: fade 200ms;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.overlay{
+    position: fixed;
+    background-color: rgba(0,0,0,.7);
+    inset: 0;
+    z-index: 1;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+} 
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.update{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: rgb(50, 125, 205);
+    color: #eee;
+    padding: 0.4rem;
+}
+
+.remove{
+    position: absolute;
+    cursor: pointer;
+    top: 0.5rem;
+    right: 0.5rem;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    color: red;
+    background-color: transparent;
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.remove:hover{
+    color: rgb(176, 1, 1);
+}   
+
+.update:hover{
+    background-color: rgb(42, 104, 171);
+}
+
+.userId, .postId{
+    text-align: left;
+    color: #969393;
+}
+
+.title, .postBody{
+    display: block;
+    border: none;
+    outline: none;
+    padding: 0.3rem;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.title{
+    color: #71C562;
+    font-weight: bold;
+    width: 90%;
+}

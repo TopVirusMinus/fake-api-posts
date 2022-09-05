@@ -1,16 +1,16 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {data:{}};
 
 const postSlice = createSlice({
     name:"posts",
     initialState,
     reducers:{
         insert:(state, action) =>{
-
+            return {...initialState, data:action.payload};
         },
         remove:(state, action) =>{
-            state = state.filter(p => p.id != action.payload)
+            state = state.filter(p => p.id !== action.payload)
         },
         update:(state, action) =>{
         }
